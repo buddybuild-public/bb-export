@@ -1,0 +1,23 @@
+{
+  "name": "bb-export",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "http-link-header": "^0.8.0",
+    "moment": "^2.19.3",
+    "prompt": "^1.0.0",
+    "request": "^2.83.0",
+    "request-promise": "^2.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "???"
+  },
+  "license": "MIT",
+  "bin": {
+    "bb-export": "index.js"
+  }
+}
