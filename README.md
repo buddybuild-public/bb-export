@@ -11,9 +11,9 @@ logs, screenshots, and instant replay videos.
 You will then be prompted to provide:
 * api access token (see https://dashboard.buddybuild.com/account/access-token)
 * application ID (or all)
-* period back to go (in months)
-* if you want feeedback/crash reports
-* export directory
+* how far back should the script look for data (in months)
+* if you want feeedback or crash reports or both
+* the directory where you want the data exported 
 
 The export will then run over the public API and pull down
 * feedback json
