@@ -41,7 +41,7 @@ const promptSchema = {
             default: true
         },
         exportDir: {
-            default: path.join(__dirname, 'export')
+            default: path.join(process.cwd(), 'export')
         }
     }
 };
