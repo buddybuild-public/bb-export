@@ -8,7 +8,11 @@ const {existsSync, mkdirSync} = require('fs');
 const {ApiClient} = require('./apiClient');
 const moment = require('moment');
 
-prompt.message = 'Buddybuild Export Script';
+const initialMessage = `Welcome to the buddybuild export script.  This script will ask you
+a few questions and then download your data for archival purposes.
+`;
+console.log(initialMessage);
+prompt.message = 'bb-export';
 prompt.start();
 
 const promptSchema = {
