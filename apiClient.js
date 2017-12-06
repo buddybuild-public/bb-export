@@ -55,13 +55,7 @@ class ApiClient {
         );
         
         return rp(effectiveConfig)
-            .promise()
-            .catch(err => {
-                console.error(`${effectiveConfig.method} to ${effectiveConfig.uri} failed with ${err.statusCode}`, {
-                    err
-                });
-                throw err;
-            });
+            .promise();
     }
 
     _fetchUriWithLinks(uri) {
