@@ -3,6 +3,15 @@ This script provides a mechanism to export buddybuild data via the public API (h
 Currently it fetches details about crash reports and feedback, as well as fetching related artifacts like
 logs, screenshots, and instant replay videos.
 
+## Prerequisites
+
+This is a Node.js script.  Thus, to install it, you need both `node` and `npm` installed (any version 6 or later
+will do).  If you don't have node installed, you can find it in your favorite distribution method (`homebrew`
+for example on Mac, `apt-get` or `yum` on Linux), or you can follow the installation steps
+here: https://nodejs.org/en/
+
+Installing node also installs `npm`, the Node Package Manager.
+
 ## Instructions
 
 * Get the script with: `npm install -g buddybuild-public/bb-export`
