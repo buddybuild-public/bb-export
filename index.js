@@ -4,7 +4,7 @@
 const Promise = require('bluebird');
 const prompt = require('prompt');
 const path = require('path');
-const {existsSync, mkdirSync} = require('fs');
+const {existsSync, mkdirSync, appendFileSync} = require('fs');
 const {ApiClient} = require('./apiClient');
 const moment = require('moment');
 
@@ -91,7 +91,16 @@ prompt.get(promptSchema, (err, result) => {
         console.log('**** Export Complete!')
     })
     .catch((err) => {
-        console.log(err);
+        let message;
+        if (err.statusCode === 401 || err.statusCode === 404) {
+            message = 'It appears there was an authentication error. Please check your auth token and app ID'
+        } else {
+            message = err.message || err.name || 'Unexpected error'
+        }
+        const errorLog = path.join(process.cwd(), 'bb-export.error.log');
+        message = `***ERROR: ${message}\n          see ${errorLog} for more details.\n`;
+        console.log(message);
+        appendFileSync(errorLog, JSON.stringify(err));
         return 1;
     });
 });
