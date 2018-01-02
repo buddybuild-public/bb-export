@@ -54,13 +54,13 @@ const promptSchema = {
             type: 'boolean',
             message: 'include test results for each build (true/false)',
             required: false,
-            default: true
+            default: false
         },
         includeTestCoverage: {
             type: 'boolean',
             message: 'include test coverage for each build (true/false)',
             required: false,
-            default: true
+            default: false
         },
         exportDir: {
             default: path.join(process.cwd(), 'export')
