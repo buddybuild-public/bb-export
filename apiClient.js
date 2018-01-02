@@ -12,7 +12,7 @@ class ApiClient {
 
     constructor(authToken) {
         this.authToken = authToken;
-        this.baseUrl = process.env.BB_BASE_URL || 'https://dashboard.buddybuild.com/'
+        this.baseUrl = process.env.BB_BASE_URL || 'https://api.buddybuild.com/'
     }
 
     getLogger() {
@@ -53,7 +53,7 @@ class ApiClient {
             baseConfig,
             configOverrides
         );
-        
+
         return rp(effectiveConfig)
             .promise();
     }
@@ -69,10 +69,11 @@ class ApiClient {
                     result[l.rel] = () => this._fetchUriWithLinks(l.uri);
                 });
             }
+
             return result;
         });
     }
-    
+
     listApps() {
         const path = 'v1/apps';
         return this.request(path);
@@ -98,6 +99,20 @@ class ApiClient {
         return this.request(path, { json: false });
     }
 
+    listBuildMetadata(appID) {
+        const path = `v1/apps/${appID}/builds`;
+        return this._fetchUriWithLinks(path);
+    }
+
+    getTestResult(buildID) {
+        const path = `v1/builds/${buildID}/tests`;
+        return this.request(path);
+    }
+
+    getTestCoverage(buildID) {
+        const path = `v1/builds/${buildID}/coverage`;
+        return this.request(path);
+    }
 }
 
 exports.ApiClient = ApiClient;
