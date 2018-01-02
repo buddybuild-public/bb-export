@@ -21,7 +21,7 @@ You will then be prompted to provide:
 * api access token (see https://dashboard.buddybuild.com/account/access-token)
 * application ID (or all)
 * how far back should the script look for data (in months)
-* if you want feeedback or crash reports or both
+* if you want feedback or crash reports or both
 * the directory where you want the data exported 
 
 The export will then run over the public API and pull down
@@ -29,6 +29,11 @@ The export will then run over the public API and pull down
 * feedback images/replay videos/logs
 * crashreport json
 * crashreport images/replay videos/logs
+
+It can also optionally download the following:
+* All the build metadata
+* All test results for each build
+* All test coverage for each build
 
 ## Example
 

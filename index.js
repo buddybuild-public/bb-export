@@ -44,6 +44,24 @@ const promptSchema = {
             required: true,
             default: true
         },
+        includeBuildMetadata: {
+          type: 'boolean',
+          message: 'include build metadata (true/false)',
+          required: false,
+          default: false
+        },
+        includeTestResult: {
+            type: 'boolean',
+            message: 'include test results for each build (true/false)',
+            required: false,
+            default: false
+        },
+        includeTestCoverage: {
+            type: 'boolean',
+            message: 'include test coverage for each build (true/false)',
+            required: false,
+            default: false
+        },
         exportDir: {
             default: path.join(process.cwd(), 'export')
         }
@@ -56,6 +74,7 @@ const exportForApp = (config, apiClient, appID, shouldContinue) => {
     console.log(`Generating Export on app ${appID} to ${appExportDir}`);
     return require('./exportFeedback').doExport(config, appExportDir, apiClient, appID, shouldContinue)
     .then(() => require('./exportCrashReport').doExport(config, appExportDir, apiClient, appID, shouldContinue))
+    .then(() => require('./exportBuildMetadata').doExport(config, appExportDir, apiClient, appID, shouldContinue))
 };
 
 prompt.get(promptSchema, (err, result) => {
@@ -64,7 +83,7 @@ prompt.get(promptSchema, (err, result) => {
         const doContinue = moment(item.created_at).isAfter(fromDate);
         if (!doContinue) {
             console.log('Not going back further...');
-        }  
+        }
         return doContinue;
     };
 
